@@ -23,8 +23,9 @@ const Navigation = () => {
                         <Nav.Link as={HashLink} to="/home#about">About Us</Nav.Link> */}
                         {
                             user?.email ?
-                                <div>
-                                    <Button className="px-4" style={{ background: '#30336b', marginLeft: '100px' }} onClick={logout}>Log Out</Button>
+                                <div className=" d-flex">
+                                    <Nav.Link as={Link} to="/dashboard"><Button className="px-4" style={{ background: '#30336b', marginLeft: '100px' }}>Dashboard</Button></Nav.Link>
+                                    <Button className="px-" style={{ background: '#30336b', marginLeft: '7px' }} onClick={logout}>Log Out</Button>
                                 </div>
                                 :
 

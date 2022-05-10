@@ -13,7 +13,7 @@ const Dashboard = () => {
                 <Col style={{ height: "100vh" }} xs={12} md={3} className="bg-dark  text-light py-5">
                     <div>
                         <ul className="list-unstyled">
-                            {!admin ? (
+                            {admin ? (
                                 <>
                                     <li>
                                         <Link
@@ -31,49 +31,11 @@ const Dashboard = () => {
                                             Add Service
                                         </Link>
                                     </li>
-                                    <li>
-                                        <Link
-                                            className="coustom-nav-link px-2 my-2"
-                                            to={`/dashboard/addDepertment`}
-                                        >
-                                            Add Depertment
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link
-                                            className="coustom-nav-link px-2 my-2"
-                                            to={`/dashboard/manageDepartment`}
-                                        >
-                                            All Depertment
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link
-                                            className="coustom-nav-link px-2 my-2"
-                                            to={`/dashboard/manageReview`}
-                                        >
-                                            Review
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link
-                                            className="coustom-nav-link px-2 my-2"
-                                            to={`/dashboard/addDoctor`}
-                                        >
-                                            Add Doctor
-                                        </Link>
-                                    </li>
+
                                 </>
                             ) : (
                                 <>
-                                    <li>
-                                        <Link
-                                            to={`/dashboard/myAppointment`}
-                                            className="coustom-nav-link px-2 my-2"
-                                        >
-                                            My Appointment
-                                        </Link>
-                                    </li>
+
                                     <li>
                                         <Link style={{ textDecoration: "none" }}
                                             className="coustom-nav-link px-2 my-2"

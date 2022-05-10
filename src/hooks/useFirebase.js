@@ -1,6 +1,7 @@
 import initializeFirebase from "../Pages/Login/Firebase/firebase.init";
 import { useEffect, useState } from "react";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, updateProfile, signOut } from "firebase/auth";
+import axios from "axios";
 
 
 //initialize firebase app
@@ -43,10 +44,18 @@ const useFirebase = () => {
     const loginUser = (email, password, location, navigate) => {
         setIsLoading(true);
         signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                const destination = location?.state?.from || '/';
-                navigate(destination);
-                setAuthError('');
+            .then(async (userCredential) => {
+                if (userCredential?.user) {
+                    const destination = location?.state?.from || '/';
+                    navigate(destination);
+                    setAuthError('');
+                    const postBody = {
+                        email: email,
+                        password: password,
+                    }
+                    const res = axios.post("https://lit-earth-64704.herokuapp.com/users", postBody)
+                    console.log(res)
+                }
             })
             .catch((error) => {
                 setAuthError(error.message);
@@ -84,7 +93,7 @@ const useFirebase = () => {
     }, [auth])
 
     useEffect(() => {
-        fetch(`https://localhost:5000/users/${user.email}`)
+        fetch(`https://lit-earth-64704.herokuapp.com/users/${user.email}`)
             .then(res => res.json())
             .then(data => setAdmin(data.admin))
     }, [user.email])
