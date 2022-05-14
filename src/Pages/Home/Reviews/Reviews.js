@@ -4,12 +4,12 @@ import { Card, Col, Container, Row, Spinner } from 'react-bootstrap';
 const Reviews = () => {
     const [reviews, setReviews] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/reviews')
+        fetch('https://lit-earth-64704.herokuapp.com/reviews')
             .then(res => res.json())
             .then(data => setReviews(data));
     }, [])
     return (
-        <div>
+        <div className="pt-3 pb-5 mt-5" style={{ background: '#F6F6F6' }}>
             <h4 className="text-center mt-5 mb-5">Testimonials</h4>
             <Container>
 

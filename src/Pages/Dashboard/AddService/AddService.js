@@ -23,15 +23,15 @@ const AddService = () => {
         formData.append('image', image);
         formData.append('description', description);
 
-        fetch('http://localhost:5000/services', {
+        fetch('https://lit-earth-64704.herokuapp.com/services', {
             method: 'POST',
             body: formData
         })
             .then(res => res.json())
             .then(data => {
                 if (data.insertedId) {
-                    setSuccess('Doctor added successfully')
-                    console.log('doctor added successfully')
+                    setSuccess('Service added successfully')
+                    console.log('Service added successfully')
                 }
             })
             .catch(error => {
@@ -52,7 +52,7 @@ const AddService = () => {
     // }
     return (
         <div>
-            <h2>Add Product</h2>
+            <h2 className="mx-5">Add Product</h2>
             <form style={{ margin: "20px" }} onSubmit={handleSubmit}>
                 <input label="Name"
                     required

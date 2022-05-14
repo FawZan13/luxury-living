@@ -9,7 +9,7 @@ const Navigation = () => {
 
     return (
         <>
-            <Navbar style={{ margin: "0px", background: '#F6F6F6' }} className="" variant="dark" sticky="top" collapseOnSelect expand="lg">
+            <Navbar style={{ margin: "0px", background: 'white' }} className="" variant="dark" sticky="top" collapseOnSelect expand="lg">
                 <Container>
                     < Navbar.Brand href="#home"><img height="40px" src="https://i.ibb.co/GFjzpG7/image-2022-04-25-T17-11-37-395-Z.png" alt="" /></Navbar.Brand>
                     <Navbar.Toggle />
@@ -25,7 +25,7 @@ const Navigation = () => {
                             user?.email ?
                                 <div className=" d-flex">
                                     <Nav.Link as={Link} to="/dashboard"><Button className="px-4" style={{ background: '#30336b', marginLeft: '100px' }}>Dashboard</Button></Nav.Link>
-                                    <Button className="px-" style={{ background: '#30336b', marginLeft: '7px' }} onClick={logout}>Log Out</Button>
+                                    <Button className="px-4" style={{ background: '#30336b', marginLeft: '7px' }} onClick={logout}>Log Out</Button>
                                 </div>
                                 :
 

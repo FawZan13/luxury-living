@@ -3,7 +3,7 @@ import { Button, Col, Container, Row } from 'react-bootstrap';
 
 const Hero = () => {
     return (
-        <div id="about">
+        <div id="about" style={{ background: '#F6F6F6' }}>
             <Container>
                 <Row className="">
                     <Col sm={12} md={6} lg={6} className="">

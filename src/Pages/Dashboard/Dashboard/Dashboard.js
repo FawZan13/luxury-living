@@ -2,6 +2,7 @@ import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { Link, Outlet } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
+import Navigation from '../../Shared/Navigation/Navigation';
 
 const Dashboard = () => {
     const { admin } = useAuth();
@@ -9,39 +10,56 @@ const Dashboard = () => {
 
     return (
         <section>
+            <Navigation />
             <Row>
-                <Col style={{ height: "100vh" }} xs={12} md={3} className="bg-dark  text-light py-5">
+                <Col style={{ height: "100vh", background: "white" }} xs={12} md={3} className="  text-light py-5">
                     <div>
                         <ul className="list-unstyled">
+
                             {admin ? (
                                 <>
                                     <li>
-                                        <Link
-                                            className="coustom-nav-link px-2 my-2"
+                                        <Link style={{ textDecoration: "none", color: "black" }}
+                                            className=""
                                             to={`/dashboard/makeAdmin`}
                                         >
-                                            Make Admin
+                                            <h5 className="text-center my-3">Make Admin</h5>
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link
-                                            className="coustom-nav-link px-2 my-2"
+                                        <Link style={{ textDecoration: "none", color: "black" }}
+                                            className=""
                                             to={`/dashboard/addService`}
                                         >
-                                            Add Service
+                                            <h5 className="text-center my-3">Add Service</h5>
                                         </Link>
                                     </li>
-
+                                    <li>
+                                        <Link style={{ textDecoration: "none", color: "black" }}
+                                            className=""
+                                            to={`/dashboard/manageBookings`}
+                                        >
+                                            <h5 className="text-center my-3">Manage Bookings</h5>
+                                        </Link>
+                                    </li>
                                 </>
                             ) : (
                                 <>
 
                                     <li>
-                                        <Link style={{ textDecoration: "none" }}
-                                            className="coustom-nav-link px-2 my-2"
+                                        <Link style={{ textDecoration: "none", color: "black" }}
+                                            className=""
                                             to={`/dashboard/addReview`}
                                         >
-                                            Add Review
+                                            <h5 className="text-center my-3">Add Review</h5>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link style={{ textDecoration: "none", color: "black" }}
+                                            className=""
+                                            to={`/dashboard/myBookings`}
+                                        >
+                                            <h5 className="text-center my-3">My Bookings</h5>
                                         </Link>
                                     </li>
                                 </>
@@ -49,7 +67,7 @@ const Dashboard = () => {
                         </ul>
                     </div>
                 </Col>
-                <Col xs={12} md={9} className="py-5">
+                <Col xs={12} md={9} className="py-5" style={{ background: "#F5F6FA" }}>
                     <Outlet />
                 </Col>
             </Row>

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Col, Container, Row, Spinner } from 'react-bootstrap';
+import { Button, Card, Col, Container, Row, Spinner } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Services = () => {
     const [service, setService] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/services')
+        fetch('https://lit-earth-64704.herokuapp.com/services')
             .then(res => res.json())
             .then(data => setService(data))
     }, [])
@@ -30,6 +31,9 @@ const Services = () => {
                                         <Card.Text className="text-center">
                                             {service.description}
                                         </Card.Text>
+                                        <Link style={{ margin: 'auto', textDecoration: 'none' }} to={`/book/${service._id}`}>
+                                            <Button color="info" variant="outlined" >Purchase</Button>
+                                        </Link>
                                     </Card.Body>
                                 </Card>
                             </Col>)

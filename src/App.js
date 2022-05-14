@@ -10,6 +10,9 @@ import Register from './Pages/Login/Register/Register';
 import MakeAdmin from './Pages/Dashboard/MakeAdmin/MakeAdmin';
 import AddReview from './Pages/Dashboard/AddReview/AddReview';
 import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
+import Book from './Pages/Book/Book';
+import MyBookings from './Pages/Dashboard/MyBookings/MyBookings';
+import ManageBookings from './Pages/Dashboard/ManageBookings/ManageBookings';
 
 
 
@@ -24,15 +27,16 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            {/* <Route path="/addService" element={<PrivateRoute><AddService /></PrivateRoute>} />
-            <Route path="/makeAdmin" element={<PrivateRoute><MakeAdmin /></PrivateRoute>} />
-            <Route path="/addReview" element={<PrivateRoute><AddReview /></PrivateRoute>} /> */}
+            <Route exact path="/book/:_id" element={<PrivateRoute><Book /></PrivateRoute>}>
+
+            </Route>
             <Route path="/dashboard" element={<Dashboard />} >
               <Route path="/dashboard/addService" element={<AdminRoute><AddService /></AdminRoute>} />
-              <Route path="/dashboard/makeAdmin" element={<PrivateRoute><MakeAdmin /></PrivateRoute>} />
+              <Route path="/dashboard/makeAdmin" element={<AdminRoute><MakeAdmin /></AdminRoute>} />
               <Route path="/dashboard/addReview" element={<PrivateRoute><AddReview /></PrivateRoute>} />
+              <Route path="/dashboard/myBookings" element={<PrivateRoute><MyBookings /></PrivateRoute>} />
+              <Route path="/dashboard/manageBookings" element={<AdminRoute><ManageBookings /></AdminRoute>} />
             </Route>
-            <Route path="/makeAdmin" element={<PrivateRoute><MakeAdmin /></PrivateRoute>} />
           </Routes>
         </BrowserRouter>
       </AuthProvider>

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
+import Navigation from '../Shared/Navigation/Navigation';
 
 const Book = () => {
     const { _id } = useParams();
@@ -14,7 +15,7 @@ const Book = () => {
     const [service, setService] = useState({});
 
     useEffect(() => {
-        fetch(`https://localhost:5000/services/${_id}`)
+        fetch(`https://lit-earth-64704.herokuapp.com/services/${_id}`)
             .then(res => res.json())
             .then(data => setService(data));
     }, [])
@@ -24,10 +25,10 @@ const Book = () => {
         data.name = service.name;
         data.price = service.price;
         data.email = email;
-        data.img = service.img;
+        data.image = service.image;
         data.description = service.description;
         console.log(data);
-        fetch("https://localhost:5000/myOrders", {
+        fetch("https://lit-earth-64704.herokuapp.com/myOrders", {
             method: "POST",
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(data),
@@ -40,8 +41,19 @@ const Book = () => {
 
     return (
         <div>
-
-            <div>
+            <Navigation />
+            <div className="d-flex mt-5">
+                <div className="mx-5">
+                    <Card style={{ width: '18rem' }} className="text-center">
+                        <Card.Img variant="top" className="px-5" src={`data:image/png;base64,${service.image}`} />
+                        <Card.Body style={{ height: '220px' }}>
+                            <Card.Title className="text-center">{service.name}</Card.Title>
+                            <Card.Text className="text-center">
+                                {service.description}
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                </div>
                 <div>
                     <form style={{ margin: "20px" }} onSubmit={handleSubmit(onSubmit)}>
                         <input type="date" {...register("date", { required: true })} style={{ width: '75%', margin: "5px", padding: "10px" }} />
